@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.getset</groupId>
-    <artifactId>webflux-as-caller</artifactId>
+    <artifactId>restTemplate-as-caller</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>webflux-as-caller</name>
+    <name>restTemplate-as-caller</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -35,10 +35,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.5</version>
         </dependency>
     </dependencies>
 
