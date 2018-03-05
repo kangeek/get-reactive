@@ -51,28 +51,14 @@ function benchmark() {
 }
 
 function sync_benchmark() {
-  benchmark mongodb 1
-  benchmark mongodb 5
-  benchmark mongodb 10
-  benchmark mongodb 20
-  benchmark mongodb 30
-  benchmark mongodb 40
-  benchmark mongodb 50
-  benchmark mongodb 60
-  benchmark mongodb 70
-  benchmark mongodb 80
+  for thread_num in 1 2 4 6 8 10 20 30 40 50 60 70 80 ; do
+    benchmark mongodb ${thread_num}
+  done
 }
 function async_benchmark() {
-  benchmark mongodb-async 1
-  benchmark mongodb-async 5
-  benchmark mongodb-async 10
-  benchmark mongodb-async 20
-  benchmark mongodb-async 30
-  benchmark mongodb-async 40
-  benchmark mongodb-async 50
-  benchmark mongodb-async 60
-  benchmark mongodb-async 70
-  benchmark mongodb-async 80
+  for thread_num in 1 2 4 6 8 10 20 30 40 50 60 70 80 ; do
+    benchmark mongodb-async ${thread_num}
+  done
 }
 
 
@@ -87,4 +73,4 @@ echo ">>> OPERATION_COUNT ${OPERATION_COUNT}"
 
 # execute benchmark
 sync_benchmark
-#async_benchmark
+async_benchmark
