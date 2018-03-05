@@ -7,6 +7,13 @@
     <groupId>com.getset</groupId>
     <artifactId>get-reactive</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>snacks</module>
+        <module>webflux-demo</module>
+        <module>gatling</module>
+    </modules>
 
     <dependencies>
         <dependency>
