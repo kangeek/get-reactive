@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
 @RestController
 public class HelloController {
     private final String TARGET_HOST = "http://localhost:8092";
     private RestTemplate restTemplate;
+    private Scheduler fixedPool;
 
     public HelloController() {
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
@@ -22,7 +24,7 @@ public class HelloController {
         this.restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory(
                 HttpClientBuilder.create().setConnectionManager(connectionManager).build()
         ));
-
+        fixedPool = Schedulers.newParallel("poolWithMaxSize", 400);
     }
 
     @GetMapping("/hello/{latency}")
@@ -31,6 +33,7 @@ public class HelloController {
 //    }
     public Mono<String> hello(@PathVariable int latency) {
         return Mono.fromCallable(() -> restTemplate.getForObject(TARGET_HOST + "/hello/" + latency, String.class))
-                .subscribeOn(Schedulers.elastic());
+//                .subscribeOn(Schedulers.elastic());
+                .subscribeOn(fixedPool);
     }
 }
