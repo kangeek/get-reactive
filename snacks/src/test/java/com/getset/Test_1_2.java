@@ -1,5 +1,6 @@
 package com.getset;
 
+import com.getset.chapter_1_2.MyAtomicInteger;
 import org.junit.Test;
 
 public class Test_1_2 {

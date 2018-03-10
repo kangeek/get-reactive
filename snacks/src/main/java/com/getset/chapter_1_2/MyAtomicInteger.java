@@ -1,4 +1,4 @@
-package com.getset;
+package com.getset.chapter_1_2;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
