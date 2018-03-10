@@ -13,6 +13,7 @@
         <module>snacks</module>
         <module>webflux-demo</module>
         <module>gatling</module>
+        <module>my-reactor</module>
     </modules>
 
     <dependencies>
