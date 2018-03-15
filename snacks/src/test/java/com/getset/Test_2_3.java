@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Test_2_3 {
 
-    private final int EVENT_DURATION   = 10;    // 生成的事件间隔时间，单位毫秒
-    private final int EVENT_COUNT      = 20;    // 生成的事件个数
+    private final int EVENT_DURATION = 10;    // 生成的事件间隔时间，单位毫秒
+    private final int EVENT_COUNT = 20;    // 生成的事件个数
     private final int PROCESS_DURATION = 30;    // 订阅者处理每个元素的时间，单位毫秒
 
     private Flux<MyEventSource.MyEvent> fastPublisher;
@@ -86,8 +86,9 @@ public class Test_2_3 {
 
     /**
      * 使用create方法生成“快的发布者”。
+     *
      * @param strategy 回压策略
-     * @return  Flux
+     * @return Flux
      */
     private Flux<MyEventSource.MyEvent> createFlux(FluxSink.OverflowStrategy strategy) {
         return Flux.create(sink -> eventSource.register(new MyEventListener() {
@@ -106,7 +107,8 @@ public class Test_2_3 {
 
     /**
      * 生成MyEvent。
-     * @param count 生成MyEvent的个数。
+     *
+     * @param count  生成MyEvent的个数。
      * @param millis 每个MyEvent之间的时间间隔。
      */
     private void generateEvent(int count, int millis) {
