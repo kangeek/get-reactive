@@ -59,7 +59,7 @@ public class DockerEventsCollector implements CommandLineRunner {
         DockerEvent dockerEvent = new DockerEvent();
         dockerEvent.setAction(event.getAction());
         dockerEvent.setActorId(Objects.requireNonNull(event.getActor()).getId());
-        dockerEvent.setFrom(event.getFrom());
+        dockerEvent.setFrom(event.getFrom() == null ? null : event.getFrom().replace("//", "_"));
         dockerEvent.setId(UUID.randomUUID().toString());
         dockerEvent.setNode(event.getNode());
         dockerEvent.setStatus(event.getStatus());
